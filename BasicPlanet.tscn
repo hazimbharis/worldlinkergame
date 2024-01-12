@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5n1kwhbgreu0"]
+
+[ext_resource type="Script" path="res://planet.gd" id="1_15vvc"]
+[ext_resource type="PackedScene" uid="uid://baaovlciykl4t" path="res://assets/models/environment/BasePlanet.glb" id="2_t8jek"]
+
+[node name="Planet" type="Node3D"]
+script = ExtResource("1_15vvc")
+
+[node name="BasePlanet2" parent="." instance=ExtResource("2_t8jek")]

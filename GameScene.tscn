@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://xgy5wvc2uwmb"]
+
+[ext_resource type="PackedScene" uid="uid://b5n1kwhbgreu0" path="res://BasicPlanet.tscn" id="1_gd7pm"]
+[ext_resource type="Script" path="res://game.gd" id="1_qilme"]
+[ext_resource type="Script" path="res://camera.gd" id="2_rns3q"]
+[ext_resource type="PackedScene" uid="uid://d2r0qve1tdsvx" path="res://UI_Overlay.tscn" id="3_gg78r"]
+[ext_resource type="Texture2D" uid="uid://d0pgtsff2or7p" path="res://8ce314fc33e625ddc876b91c47f7affc.png" id="4_285yd"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yvj02"]
+panorama = ExtResource("4_285yd")
+
+[sub_resource type="Sky" id="Sky_fer8n"]
+sky_material = SubResource("PanoramaSkyMaterial_yvj02")
+
+[sub_resource type="Environment" id="Environment_ll5tq"]
+background_mode = 2
+sky = SubResource("Sky_fer8n")
+adjustment_enabled = true
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_qilme")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.737802, -0.451885, 0.501447, -0.0073952, 0.737409, 0.675406, -0.674977, -0.502024, 0.54072, 1.85277, 8.28873, 2.58007)
+script = ExtResource("2_rns3q")
+
+[node name="Planet" parent="." instance=ExtResource("1_gd7pm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.0341, 2)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_gg78r")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ll5tq")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2r0qve1tdsvx"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_0y42q"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_0y42q")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -273.0
+offset_top = -391.0
+offset_right = -43.0
+offset_bottom = -51.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Planet Info
+
+Name:
+
+Type:
+
+Other value:"
