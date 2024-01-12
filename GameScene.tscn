@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://xgy5wvc2uwmb"]
+[gd_scene load_steps=10 format=3 uid="uid://dl7ik1bw5ss7w"]
 
-[ext_resource type="PackedScene" uid="uid://b5n1kwhbgreu0" path="res://BasicPlanet.tscn" id="1_gd7pm"]
+[ext_resource type="PackedScene" path="res://BasicPlanet.tscn" id="1_gd7pm"]
 [ext_resource type="Script" path="res://game.gd" id="1_qilme"]
 [ext_resource type="Script" path="res://camera.gd" id="2_rns3q"]
-[ext_resource type="PackedScene" uid="uid://d2r0qve1tdsvx" path="res://UI_Overlay.tscn" id="3_gg78r"]
+[ext_resource type="PackedScene" path="res://UI_Overlay.tscn" id="3_gg78r"]
 [ext_resource type="Texture2D" uid="uid://d0pgtsff2or7p" path="res://8ce314fc33e625ddc876b91c47f7affc.png" id="4_285yd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2fg7j"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yvj02"]
 panorama = ExtResource("4_285yd")
@@ -31,7 +33,15 @@ script = ExtResource("2_rns3q")
 [node name="Planet" parent="." instance=ExtResource("1_gd7pm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.0341, 2)
 
+[node name="Area3D" type="Area3D" parent="Planet"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Planet/Area3D"]
+transform = Transform3D(2.063, 0, 0, 0, 2.063, 0, 0, 0, 2.063, 0, 0, 0)
+shape = SubResource("SphereShape3D_2fg7j")
+
 [node name="CanvasLayer" parent="." instance=ExtResource("3_gg78r")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ll5tq")
+
+[connection signal="mouse_entered" from="Planet/Area3D" to="." method="_on_area_3d_mouse_entered"]
