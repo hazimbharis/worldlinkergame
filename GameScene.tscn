@@ -25,7 +25,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.737802, -0.451885, 0.501447, -0.0073952, 0.737409, 0.675406, -0.674977, -0.502024, 0.54072, 1.85277, 8.28873, 2.58007)
+transform = Transform3D(0.737802, -0.451885, 0.501447, -0.0073952, 0.737409, 0.675406, -0.674977, -0.502024, 0.54072, 1.85277, 8.74802, 2.58007)
 script = ExtResource("2_rns3q")
 
 [node name="Planet" parent="." instance=ExtResource("1_gd7pm")]
