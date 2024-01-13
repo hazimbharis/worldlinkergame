@@ -46,7 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_kx4wr")
 radius = 1.1
 
 [node name="Planet" type="Area3D" node_paths=PackedStringArray("planet_mesh")]
-transform = Transform3D(0.965282, 0, 0.261207, 0, 1, 0, -0.261207, 0, 0.965282, 0, 0, 0)
+transform = Transform3D(-0.921709, 0, 0.38788, 0, 1, 0, -0.38788, 0, -0.921709, 0, 0, 0)
 script = ExtResource("1_15vvc")
 planet_mesh = NodePath("Mesh")
 

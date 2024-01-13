@@ -22,4 +22,4 @@ func _on_mouse_entered() -> void:
 func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.double_click:
 		print('double click ', event)
-		get_node("../../CanvasLayer")._create_text(event.position)
+		get_node("../../../main")._create_text(position)
