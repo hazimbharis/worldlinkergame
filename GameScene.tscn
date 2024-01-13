@@ -33,13 +33,13 @@ shadow_enabled = true
 [node name="Planets" type="Node" parent="."]
 
 [node name="Planet" parent="Planets" instance=ExtResource("1_gd7pm")]
-transform = Transform3D(-0.527903, 0, 0.849302, 0, 1, 0, -0.849302, 0, -0.527903, 0, 0, 0)
+transform = Transform3D(0.938423, 0, 0.345483, 0, 1, 0, -0.345483, 0, 0.938423, 0, 0, 0)
 
 [node name="Planet2" parent="Planets" instance=ExtResource("1_gd7pm")]
-transform = Transform3D(-0.42213, 0, 0.906534, 0, 1, 0, -0.906534, 0, -0.42213, 3.36269, 0, -0.675941)
+transform = Transform3D(0.957358, 0, -0.2889, 0, 1, 0, 0.2889, 0, 0.957358, 3.36269, 0, -0.675941)
 
 [node name="Planet3" parent="Planets" instance=ExtResource("1_gd7pm")]
-transform = Transform3D(-0.000576659, 0, -0.999999, 0, 1, 0, 0.999999, 0, -0.000576659, 7.09917, 0, -1.25548)
+transform = Transform3D(-0.991529, 0, 0.129885, 0, 1, 0, -0.129885, 0, -0.991529, 7.09917, 0, -1.25548)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_gg78r")]
 
