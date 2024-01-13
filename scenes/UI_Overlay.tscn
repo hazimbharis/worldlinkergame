@@ -50,6 +50,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="InfoboxContainer/MarginContainer/HBoxContainer"]
+layout_direction = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6f6p1")
 text = "Planet Info

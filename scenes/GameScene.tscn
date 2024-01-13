@@ -37,13 +37,13 @@ script = ExtResource("4_utimj")
 [node name="Planets" type="Node" parent="."]
 
 [node name="Planet" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(0.2203, 0, -0.97543, 0, 1, 0, 0.97543, 0, 0.2203, 0, 0, 0)
+transform = Transform3D(0.0270067, 0, 0.999633, 0, 1, 0, -0.999633, 0, 0.0270067, 0, 0, 0)
 
 [node name="Planet2" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(-0.447765, 0, 0.894151, 0, 1, 0, -0.894151, 0, -0.447765, 3.36269, 0, -0.675941)
+transform = Transform3D(0.573527, 0, 0.819186, 0, 1, 0, -0.819186, 0, 0.573527, 3.36269, 0, -0.675941)
 
 [node name="Planet3" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(0.713325, 0, -0.700833, 0, 1, 0, 0.700833, 0, 0.713325, 7.09917, 0, -1.25548)
+transform = Transform3D(-0.382165, 0, -0.924094, 0, 1, 0, 0.924094, 0, -0.382165, 7.09917, 0, -1.25548)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_sfxou")]
 
