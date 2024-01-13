@@ -1,13 +1,23 @@
 extends Node3D
 
 func _ready():
-	draw_path("../Path3D")   #This func call currently assumes Path3D is a node thats been manually instantiated.
+	draw_path( create_path3D(Vector3(0,0,0), Vector3(-3,0,5)) ) #Test call. Can delete
+	pass
 	
-func draw_path(path):
+func create_path3D(start: Vector3, end: Vector3) -> Path3D:
+	var curve = Curve3D.new()
+	curve.add_point(start, Vector3(1,0,0), Vector3(0,-1,0)) #These 2 Vector3 values controls the curve of the spline
+	curve.add_point(end, Vector3(0,0,-1), Vector3(1,0,0))   #These 2 Vector3 values controls the curve of the spline
+	var path = Path3D.new()
+	path.set_curve(curve)
+	return path
+	
+func draw_path(path: Path3D):
 	#Instantiates a CSGPolygon3D in path mode for drawing path
 	var csgpoly = CSGPolygon3D.new()
 	csgpoly.mode = 2
-	csgpoly.path_node = path
+	add_child(path)
+	csgpoly.path_node = path.get_path()
 	add_child(csgpoly)
 	
 	#The drawing process
