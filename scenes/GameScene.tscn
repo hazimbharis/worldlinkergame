@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl7ik1bw5ss7w"]
+[gd_scene load_steps=11 format=3 uid="uid://dl7ik1bw5ss7w"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tb4hl"]
-[ext_resource type="Texture2D" uid="uid://d0pgtsff2or7p" path="res://starsbackground.png" id="2_75pya"]
+[ext_resource type="Texture2D" uid="uid://d0pgtsff2or7p" path="res://assets/models/environment/starsbackground.png" id="2_75pya"]
 [ext_resource type="PackedScene" uid="uid://bkku6p607cwxt" path="res://scenes/camera_controller.tscn" id="3_o6r2t"]
 [ext_resource type="PackedScene" uid="uid://b5n1kwhbgreu0" path="res://scenes/BasicPlanet.tscn" id="4_0pgb7"]
+[ext_resource type="Script" path="res://scripts/LineDraw.gd" id="4_utimj"]
 [ext_resource type="PackedScene" uid="uid://d2r0qve1tdsvx" path="res://scenes/UI_Overlay.tscn" id="5_sfxou"]
 [ext_resource type="PackedScene" uid="uid://fnjs10vv8vmr" path="res://tmp/stars.tscn" id="6_tmhey"]
 
@@ -30,16 +31,19 @@ shadow_enabled = true
 
 [node name="CameraController" parent="." instance=ExtResource("3_o6r2t")]
 
+[node name="PathDrawer" type="Node3D" parent="."]
+script = ExtResource("4_utimj")
+
 [node name="Planets" type="Node" parent="."]
 
 [node name="Planet" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(0.411981, 0, 0.91119, 0, 1, 0, -0.91119, 0, 0.411981, 0, 0, 0)
+transform = Transform3D(0.058012, 0, -0.998314, 0, 1, 0, 0.998314, 0, 0.058012, 0, 0, 0)
 
 [node name="Planet2" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(0.999758, 0, -0.021982, 0, 1, 0, 0.021982, 0, 0.999758, 3.36269, 0, -0.675941)
+transform = Transform3D(-0.217707, 0, 0.976014, 0, 1, 0, -0.976014, 0, -0.217707, 3.36269, 0, -0.675941)
 
 [node name="Planet3" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(-0.406719, 0, -0.913553, 0, 1, 0, 0.913553, 0, -0.406719, 7.09917, 0, -1.25548)
+transform = Transform3D(-0.903391, 0, 0.428816, 0, 1, 0, -0.428816, 0, -0.903391, 7.09917, 0, -1.25548)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_sfxou")]
 
