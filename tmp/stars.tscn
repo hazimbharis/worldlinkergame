@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://fnjs10vv8vmr"]
+
+[ext_resource type="Script" path="res://tmp/stars.gd" id="1_62njm"]
+[ext_resource type="ArrayMesh" uid="uid://dihdsjmsniwgt" path="res://tmp/star2.tres" id="3_ovvbu"]
+
+[node name="MultiMeshStars" type="Node3D"]
+script = ExtResource("1_62njm")
+mesh = ExtResource("3_ovvbu")
+min_dist = 150
+max_dist = 200
+quantity = 5000
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_ovvbu")
+skeleton = NodePath("")
