@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5n1kwhbgreu0"]
+[gd_scene load_steps=10 format=3 uid="uid://b5n1kwhbgreu0"]
 
-[ext_resource type="Script" path="res://planet.gd" id="1_15vvc"]
-[ext_resource type="Texture2D" uid="uid://bq7fficcf5asq" path="res://assets/models/environment/BasePlanet_BaseWorldTexture.png" id="2_c6o5u"]
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_a4kjc"]
+[ext_resource type="Texture2D" uid="uid://bq7fficcf5asq" path="res://assets/models/environment/BasePlanet_BaseWorldTexture.png" id="2_kbuym"]
+[ext_resource type="Script" path="res://scenes/PlanetInfo.gd" id="3_kk3n0"]
+[ext_resource type="Script" path="res://resources/PlanetAttributes.gd" id="4_6s4jh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtvb4"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("2_c6o5u")
+albedo_texture = ExtResource("2_kbuym")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kx4wr"]
 _surfaces = [{
@@ -45,18 +47,28 @@ shadow_mesh = SubResource("ArrayMesh_kx4wr")
 [sub_resource type="SphereShape3D" id="SphereShape3D_2q657"]
 radius = 1.1
 
+[sub_resource type="Resource" id="Resource_igawd"]
+script = ExtResource("4_6s4jh")
+planet_type = "Industry"
+planet_name = "Jaddy Wriggles"
+planet_status = "Unconnected"
+
 [node name="Planet" type="Area3D" node_paths=PackedStringArray("planet_mesh")]
-transform = Transform3D(-0.921709, 0, 0.38788, 0, 1, 0, -0.38788, 0, -0.921709, 0, 0, 0)
-script = ExtResource("1_15vvc")
+transform = Transform3D(0.975247, 0, 0.221114, 0, 1, 0, -0.221114, 0, 0.975247, 0, 0, 0)
+script = ExtResource("1_a4kjc")
 planet_mesh = NodePath("Mesh")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.941436, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.877547, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_mvxai")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_2q657")
+
+[node name="PlanetInfo" type="Node" parent="."]
+script = ExtResource("3_kk3n0")
+attributes = SubResource("Resource_igawd")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

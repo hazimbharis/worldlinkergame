@@ -1,8 +1,9 @@
 @tool
 extends Node3D
 
-var spin_deg:float = 0
+@onready var info = $PlanetInfo
 
+var spin_deg:float = 0
 
 @export var planet_mesh:MeshInstance3D
 
@@ -15,6 +16,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_mouse_entered() -> void:
+	get_node("../../CanvasLayer")._update_info(info.attributes)
 	#print("entered!")
 	pass
 
@@ -22,4 +24,4 @@ func _on_mouse_entered() -> void:
 func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.double_click:
 		print('double click ', event)
-		get_node("../../../main")._create_text(position)
+		get_node("../../../main")._create_text(Vector3(position.x, 1, position.z))
