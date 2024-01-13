@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://resources/PlanetAttributes.gd" id="4_6s4jh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtvb4"]
+resource_local_to_scene = true
 resource_name = "Material"
 cull_mode = 2
 albedo_texture = ExtResource("2_kbuym")
@@ -26,6 +27,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mvxai"]
+resource_local_to_scene = true
 resource_name = "BasePlanet_Sphere"
 _surfaces = [{
 "aabb": AABB(-0.999999, -1, -1, 2, 2, 2),
@@ -54,12 +56,12 @@ planet_name = "Jaddy Wriggles"
 planet_status = "Unconnected"
 
 [node name="Planet" type="Area3D" node_paths=PackedStringArray("planet_mesh")]
-transform = Transform3D(0.975247, 0, 0.221114, 0, 1, 0, -0.221114, 0, 0.975247, 0, 0, 0)
+transform = Transform3D(-0.943794, 0, -0.330532, 0, 1, 0, 0.330532, 0, -0.943794, 0, 0, 0)
 script = ExtResource("1_a4kjc")
 planet_mesh = NodePath("Mesh")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.877547, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.948905, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_mvxai")
 skeleton = NodePath("")
 

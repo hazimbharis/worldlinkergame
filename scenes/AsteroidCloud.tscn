@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbx4em67ofhxv"]
+
+[ext_resource type="PackedScene" uid="uid://ngn0q8ncuhy0" path="res://assets/models/environment/AsteroidCloud.glb" id="1_eq6xy"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="AsteroidCloud2" parent="." instance=ExtResource("1_eq6xy")]
