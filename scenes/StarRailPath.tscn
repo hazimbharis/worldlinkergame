@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://0ninnhghujjq"]
+
+[ext_resource type="PackedScene" uid="uid://dsv1tqb3vnegs" path="res://assets/models/environment/StarRailPath.glb" id="1_k2qqa"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StarRailPath2" parent="." instance=ExtResource("1_k2qqa")]
