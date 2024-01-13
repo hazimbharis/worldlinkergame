@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2r0qve1tdsvx"]
 
-[ext_resource type="Script" path="res://ui.gd" id="1_0y42q"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_0y42q"]
 [ext_resource type="FontFile" uid="uid://c0buhu5smsj6n" path="res://Kitchen Sink.ttf" id="2_6f6p1"]
 [ext_resource type="Texture2D" uid="uid://b8lqhl2hhkkdv" path="res://gear.png" id="3_i3ti4"]
 
@@ -15,14 +15,13 @@ border_width_bottom = 2
 script = ExtResource("1_0y42q")
 
 [node name="InfoboxContainer" type="MarginContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.698
-anchor_top = 0.602
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.023
-offset_left = -0.0960083
-offset_top = -0.0960388
-offset_bottom = -14.904
+anchor_bottom = 1.0
+offset_left = -348.0
+offset_top = -258.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -62,15 +61,13 @@ Type:
 Status:"
 
 [node name="ResourceContainer" type="MarginContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.9
-anchor_top = 0.02
-anchor_right = 0.979
-anchor_bottom = 0.082
-offset_left = 0.199951
-offset_top = 0.039999
-offset_right = 0.192017
-offset_bottom = -0.136002
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -115.0
+offset_top = 13.0
+offset_right = -24.0
+offset_bottom = 53.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResourceContainer"]
 layout_mode = 2
@@ -85,3 +82,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "x 00"
 justification_flags = 226
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="index_pressed" from="PopupMenu" to="." method="_on_popup_menu_index_pressed"]

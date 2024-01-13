@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlanetAttributes" load_steps=2 format=3 uid="uid://clkocl5d5rj"]
+
+[ext_resource type="Script" path="res://resources/PlanetAttributes.gd" id="1_t2py4"]
+
+[resource]
+script = ExtResource("1_t2py4")
+planet_type = "Industry"
+planet_name = "Jaddy Wriggles"
+planet_status = "Unconnected"

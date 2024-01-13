@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0pgtsff2or7p"
-path.s3tc="res://.godot/imported/8ce314fc33e625ddc876b91c47f7affc.png-a9046fd924b6c11d5bab52c35f2cea38.s3tc.ctex"
+uid="uid://dyb5kkyf4gqo0"
+path.s3tc="res://.godot/imported/AsteroidCloud_Asteroid.png-d8b97ec4b9db89556c6782092971875f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://8ce314fc33e625ddc876b91c47f7affc.png"
-dest_files=["res://.godot/imported/8ce314fc33e625ddc876b91c47f7affc.png-a9046fd924b6c11d5bab52c35f2cea38.s3tc.ctex"]
+source_file="res://assets/models/environment/AsteroidCloud_Asteroid.png"
+dest_files=["res://.godot/imported/AsteroidCloud_Asteroid.png-d8b97ec4b9db89556c6782092971875f.s3tc.ctex"]
 
 [params]
 

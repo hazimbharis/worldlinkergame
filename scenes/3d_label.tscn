@@ -1,15 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://k3hbq1hcix1e"]
 
-[ext_resource type="Script" path="res://3d_label.gd" id="1_ilacb"]
-[ext_resource type="Script" path="res://SubViewport.gd" id="1_rbgp7"]
-[ext_resource type="Shader" path="res://text_popup.gdshader" id="2_dkvx7"]
-[ext_resource type="FontFile" uid="uid://c0buhu5smsj6n" path="res://Kitchen Sink.ttf" id="3_7ervk"]
+[ext_resource type="Script" path="res://scripts/3d_label.gd" id="1_u0s50"]
+[ext_resource type="Script" path="res://scripts/SubViewport.gd" id="2_78i6t"]
+[ext_resource type="Shader" path="res://scripts/text_popup.gdshader" id="3_1w52a"]
+[ext_resource type="FontFile" uid="uid://c0buhu5smsj6n" path="res://Kitchen Sink.ttf" id="4_lw0rx"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mlqos"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sqv40"]
-shader = ExtResource("2_dkvx7")
+shader = ExtResource("3_1w52a")
 shader_parameter/height = 5.0
 shader_parameter/frequency = 10.0
 shader_parameter/speed = 5.0
@@ -17,12 +17,12 @@ shader_parameter/speed = 5.0
 [node name="3DLabel" type="Sprite3D"]
 billboard = 1
 texture = SubResource("ViewportTexture_mlqos")
-script = ExtResource("1_ilacb")
+script = ExtResource("1_u0s50")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 canvas_item_default_texture_filter = 0
-script = ExtResource("1_rbgp7")
+script = ExtResource("2_78i6t")
 
 [node name="Label" type="Label" parent="SubViewport"]
 material = SubResource("ShaderMaterial_sqv40")
@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_7ervk")
+theme_override_fonts/font = ExtResource("4_lw0rx")
 theme_override_font_sizes/font_size = 40
 text = "PLANET CONNECTED!
 

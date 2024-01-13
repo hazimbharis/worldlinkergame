@@ -1,0 +1,19 @@
+planet types:
+residential planet
+(planet has people resource)
+(will slowly die off unless connected to resource-rich planet)
+
+industry planet
+(planet can produce materials to build rails)
+(needs people resource to build rails)
+
+resourch-rich planet
+(planet that has food resource)
+(has a limited amount of resource which will eventually run out)
+
+obstacle types:
+asteroid belt
+(prevents us from making rail of best distance)
+
+
+

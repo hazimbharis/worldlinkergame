@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://baffokl21e20o"]
 
-[ext_resource type="Texture2D" uid="uid://cbhcmcilcxq72" path="res://assets/models/environment/StarRailNode_StarRailTexture.png" id="1_lfcyf"]
+[ext_resource type="Texture2D" uid="uid://cbhcmcilcxq72" path="res://assets/models/environment/StarRailNode_StarRailTexture.png" id="1_l37vr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3f0ci"]
 resource_name = "SpaceStation"
 cull_mode = 2
-albedo_texture = ExtResource("1_lfcyf")
+albedo_texture = ExtResource("1_l37vr")
 metallic = 1.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_uufta"]
