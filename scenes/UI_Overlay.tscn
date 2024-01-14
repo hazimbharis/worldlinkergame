@@ -86,7 +86,7 @@ expand_mode = 2
 [node name="Label" type="Label" parent="ResourceContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "x 000"
+text = "x 50"
 justification_flags = 226
 
 [node name="Label" type="Label" parent="."]

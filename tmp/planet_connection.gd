@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 				
 				# this is prob a war crime but idc
 				dist += 0.5
+				get_node("../../CanvasLayer").total_cost = round(dist)
 		#print(points.size())
 		if Input.is_action_just_released("l_click"):
 		#if randi() % 10 == 5:
