@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		if child.get_parent().is_in_group("resource"):
 			var res = child.get_parent()
 			print("doing!")
-			res.global_position += Vector3.MODEL_FRONT*delta
+			res.global_position += (Vector3.MODEL_FRONT*delta).rotated(Vector3(0,1,0), get_rotation().y) #A bit of a dirty fix, but we don't have a lotta time
 	
 	if selecting:
 		if Input.is_action_just_pressed("rotate_key"):
