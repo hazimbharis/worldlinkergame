@@ -130,12 +130,12 @@ func _on_timer_timeout() -> void:
 		print("spawn")
 		
 		add_child(res)
-		res.scale = Vector3(1, 1, 1)
-		res.global_position = global_position + Vector3(randf_range(-2,2), 0, randf_range(-2,2))
+		res.scale = Vector3(0.5, 0.5, 0.5)
+		res.global_position = global_position
 		res.type = info.planet_type
 		var t = load("res://scenes/3d_label.tscn").instantiate()
 		t.text = str(res.type)
 		t.disappear = false
 		res.add_child(t)
-		get_tree().create_tween().tween_property(res, "global_position", res.global_position + Vector3(5,0, 0).rotated(Vector3(0, 1, 0), randf() * 2 * PI), 2)
+		#get_tree().create_tween().tween_property(res, "global_position", res.global_position + Vector3(5,0, 0).rotated(Vector3(0, 1, 0), randf() * 2 * PI), 2)
 		res.from = self
