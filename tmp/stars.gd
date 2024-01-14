@@ -8,7 +8,7 @@ var instance_rid:RID
 @export var min_dist := 2
 @export var max_dist := 3
 @export var quantity := 1
-
+#a
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	instance_rid = VisualInstance3D.new().get_instance()

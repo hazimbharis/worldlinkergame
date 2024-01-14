@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://ee6avb43brth"]
+
+[ext_resource type="Script" path="res://scenes/blower.gd" id="1_qrg6h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wp47x"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nphmv"]
+albedo_color = Color(1, 0.909804, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_pdimi"]
+material = SubResource("StandardMaterial3D_nphmv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pkh5c"]
+size = Vector3(4.02289, 1, 7.83755)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_862de"]
+emission_shape_offset = Vector3(0, 0, 0.8)
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.1, 0.1)
+direction = Vector3(0, 0, 1)
+spread = 20.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 2)
+
+[sub_resource type="Gradient" id="Gradient_by520"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.604255, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.395745, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lrxg3"]
+gradient = SubResource("Gradient_by520")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3p1k"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(0.333333, 0.796078, 0.847059, 1)
+albedo_texture = SubResource("GradientTexture2D_lrxg3")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_4o06j"]
+material = SubResource("StandardMaterial3D_h3p1k")
+size = Vector2(0.1, 0.1)
+
+[node name="blower" type="Node3D" node_paths=PackedStringArray("area3d")]
+script = ExtResource("1_qrg6h")
+area3d = NodePath("MeshInstance3D/Area3D")
+
+[node name="collision" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00473022, 0, 4.11825)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.05826)
+shape = SubResource("BoxShape3D_wp47x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_pdimi")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00473022, 0, 4.11825)
+shape = SubResource("BoxShape3D_pkh5c")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 64
+lifetime = 1.25
+process_material = SubResource("ParticleProcessMaterial_862de")
+draw_pass_1 = SubResource("QuadMesh_4o06j")
+
+[connection signal="mouse_entered" from="collision" to="." method="_on_collision_mouse_entered"]
+[connection signal="mouse_exited" from="collision" to="." method="_on_collision_mouse_exited"]
+[connection signal="area_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_area_entered"]

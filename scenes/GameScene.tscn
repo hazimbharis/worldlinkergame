@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tb4hl"]
 [ext_resource type="Texture2D" uid="uid://d0pgtsff2or7p" path="res://assets/models/environment/starsbackground.png" id="2_75pya"]
 [ext_resource type="PackedScene" uid="uid://bkku6p607cwxt" path="res://scenes/camera_controller.tscn" id="3_o6r2t"]
-[ext_resource type="PackedScene" uid="uid://b5n1kwhbgreu0" path="res://scenes/BasicPlanet.tscn" id="4_0pgb7"]
 [ext_resource type="Script" path="res://scenes/RailManager.gd" id="5_c0j7f"]
 [ext_resource type="PackedScene" uid="uid://d2r0qve1tdsvx" path="res://scenes/UI_Overlay.tscn" id="5_sfxou"]
+[ext_resource type="PackedScene" uid="uid://ee6avb43brth" path="res://scenes/blower.tscn" id="6_qty5k"]
 [ext_resource type="PackedScene" uid="uid://fnjs10vv8vmr" path="res://tmp/stars.tscn" id="6_tmhey"]
 [ext_resource type="PackedScene" uid="uid://c72c2khpa2aoh" path="res://tmp/starrail.tscn" id="8_0dkg3"]
 [ext_resource type="Texture2D" uid="uid://cts41etp6hsip" path="res://assets/sparkle.png" id="8_pok27"]
@@ -38,6 +38,7 @@ transparency = 2
 alpha_scissor_threshold = 0.9
 alpha_antialiasing_mode = 0
 shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
 albedo_texture = ExtResource("8_pok27")
 billboard_mode = 3
 particles_anim_h_frames = 1
@@ -63,24 +64,10 @@ trail = NodePath("../GPUParticles3D")
 
 [node name="Planets" type="Node" parent="."]
 
-[node name="Planet" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(0.898951, 0, -0.438042, 0, 1, 0, 0.438042, 0, 0.898951, -2.26255, 0, 0)
-visible = false
-
-[node name="Planet2" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(-0.181373, 0, -0.983413, 0, 1, 0, 0.983413, 0, -0.181373, 3.36269, 0, -0.675941)
-visible = false
-
-[node name="Planet3" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(0.973576, 0, 0.228361, 0, 1, 0, -0.228361, 0, 0.973576, 7.09917, 0, -1.25548)
-visible = false
-
-[node name="Rails" type="Node" parent="."]
+[node name="Building" type="Node" parent="."]
 script = ExtResource("5_c0j7f")
 rail_node = ExtResource("8_0dkg3")
-
-[node name="Rail" parent="Rails" instance=ExtResource("8_0dkg3")]
-process_mode = 4
+blow_node = ExtResource("6_qty5k")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_sfxou")]
 unique_name_in_owner = true

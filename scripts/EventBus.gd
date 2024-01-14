@@ -1,3 +1,4 @@
 extends Node
 
-signal focused_at(Vector3)
+signal focused_at(pos: Vector3)
+signal update_attributes(attributes)

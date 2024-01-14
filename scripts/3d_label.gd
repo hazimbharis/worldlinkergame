@@ -4,10 +4,10 @@ const CHAR_READ_RATE = 0.1
 
 @onready var viewport = $SubViewport
 @onready var label = $SubViewport/Label
-
+var text = "NEW CONNECTION"
 func _ready():
 	hide_textbox()
-	add_text("NEW CONNECTION!")
+	add_text(text)
 
 func hide_textbox():
 	label.text = ""

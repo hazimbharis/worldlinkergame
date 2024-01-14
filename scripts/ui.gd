@@ -18,6 +18,7 @@ func _create_text(mouse_position):
 	pass
 
 func _ready():
+	EventBus.connect("update_attributes", _update_info)
 	_popup_menu.add_item("Add Rail Node", PopupIds.ADD_NODE)
 
 func _input(event):

@@ -34,6 +34,8 @@ func _input(event: InputEvent) -> void:
 			camera.position.z = clampf(camera.position.z - 0.85, 5, 15)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			camera.position.z = clampf(camera.position.z + 0.85, 5, 30)
+		var s = trail.draw_pass_1.size
+		trail.draw_pass_1.size = Vector2(remap(camera.position.z, 5, 15, 0.5, 1.5), remap(camera.position.z, 5, 15, 0.5, 1))
 
 func _move(delta):
 	var velocity = Vector3.ZERO
