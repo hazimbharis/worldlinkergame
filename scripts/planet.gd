@@ -218,7 +218,6 @@ func _on_timer_timeout() -> void:
 			t.text = "WORKFORCE"
 		else:
 			t.text = "FOOD"
-		t.text = str(res.type)
 		t.disappear = false
 		res.add_child(t)
 		#get_tree().create_tween().tween_property(res, "global_position", res.global_position + Vector3(5,0, 0).rotated(Vector3(0, 1, 0), randf() * 2 * PI), 2)

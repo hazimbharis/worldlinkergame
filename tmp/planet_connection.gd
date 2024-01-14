@@ -91,7 +91,6 @@ func pass_resource(lifetime,type):
 		t.text = "WORKFORCE"
 	else:
 		t.text = "FOOD"
-	t.text = str(res.type)
 	t.disappear = false
 	res.add_child(t)
 	res.from = $Start/IN
