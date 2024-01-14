@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c72c2khpa2aoh"]
+[gd_scene load_steps=15 format=3 uid="uid://c72c2khpa2aoh"]
 
 [ext_resource type="Script" path="res://tmp/planet_connection.gd" id="1_838e8"]
 [ext_resource type="PackedScene" uid="uid://ck2iavx2qoj7d" path="res://scenes/movable_resource.tscn" id="2_7alo2"]
+[ext_resource type="Texture2D" uid="uid://c8jyqpksn6ypw" path="res://assets/vfx/GAP_EasyExplosions_Textures/Flare00.PNG" id="3_rv31f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81yxo"]
 albedo_color = Color(0, 1, 0.227451, 1)
@@ -19,6 +20,38 @@ material = SubResource("StandardMaterial3D_yw0ma")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfjob"]
 emission = Color(0.435294, 0.894118, 0.705882, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gjqq"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_rv31f")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_qkisl"]
+colors = PackedColorArray(1, 0, 0, 1, 0.785124, 0.713322, 0.198935, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3el0j"]
+gradient = SubResource("Gradient_qkisl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e2hf2"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, -20, 0)
+damping_min = 5.0
+damping_max = 10.0
+color_ramp = SubResource("GradientTexture1D_3el0j")
+hue_variation_min = 0.84
+hue_variation_max = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_x3nuu"]
 
 [node name="Rail" type="Node3D" node_paths=PackedStringArray("start", "end", "path", "csgpoly") groups=["rail"]]
 script = ExtResource("1_838e8")
@@ -68,7 +101,53 @@ path_joined = false
 material = SubResource("StandardMaterial3D_yfjob")
 
 [node name="Path3D" type="Path3D" parent="."]
+unique_name_in_owner = true
 
 [node name="AllowedIn" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="vfx_explosion1" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="vfx_explosion1"]
+material_override = SubResource("StandardMaterial3D_1gjqq")
+emitting = false
+amount = 100
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 64
+process_material = SubResource("ParticleProcessMaterial_e2hf2")
+draw_pass_1 = SubResource("QuadMesh_x3nuu")
+
+[node name="vfx_explosion2" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="vfx_explosion2"]
+material_override = SubResource("StandardMaterial3D_1gjqq")
+emitting = false
+amount = 100
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 64
+process_material = SubResource("ParticleProcessMaterial_e2hf2")
+draw_pass_1 = SubResource("QuadMesh_x3nuu")
+
+[node name="vfx_explosion3" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="vfx_explosion3"]
+material_override = SubResource("StandardMaterial3D_1gjqq")
+emitting = false
+amount = 100
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 64
+process_material = SubResource("ParticleProcessMaterial_e2hf2")
+draw_pass_1 = SubResource("QuadMesh_x3nuu")

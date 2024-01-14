@@ -88,9 +88,20 @@ func pass_resource(lifetime,type):
 	res.from = $Start/IN
 	$Path3D.call_deferred("add_child", res)
 
-func destroy_path():
+func destroy_path(pos):
+	%vfx_explosion1.global_position = points.pick_random()
+	%vfx_explosion1.get_child(0).emitting = true
+	
+	%vfx_explosion2.global_position = points.pick_random()
+	%vfx_explosion2.get_child(0).emitting = true
+	
+	%vfx_explosion3.global_position = points.pick_random()
+	%vfx_explosion3.get_child(0).emitting = true
+	
+	await get_tree().create_timer(0.2).timeout
+	
 	var t = get_tree().create_tween()
-	t.tween_property(self, "position", position - Vector3(0, 1000, 0), 20)
+	t.tween_property(self, "position", position - Vector3(0, 100, 0), 5)
 	await t.finished
 	#await get_tree().create_tween().tween_property(self, "position.y", -50, 1).finished
 	call_deferred("queue_free")
