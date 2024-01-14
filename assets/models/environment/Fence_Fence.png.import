@@ -2,7 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbj4l1c6h1tot"
+
+uid="uid://djow7d5h1ql7m"
+
 path.s3tc="res://.godot/imported/Fence_Fence.png-c57bdf88e2c30fde500abb82d63b56cc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],

@@ -7,16 +7,20 @@ var total_cost : float = 0.0
 @onready var info = $InfoboxContainer/MarginContainer/HBoxContainer/Label
 @onready var resource = $ResourceContainer/HBoxContainer/Label
 @onready var indicator = $Label
+@onready var option1 = $HotbarContainer/Panel1
+@onready var option2 = $HotbarContainer/Panel2
+@onready var option3 = $HotbarContainer/Panel3
 
 func _create_text(mouse_position):
 	#var t = load("res://text_popup.tscn").instantiate()
-	#get_parent().add_child(t)
+	#get_parent().add_child(t)HotbarContainer/hotbara
 	#t.position = mouse_position
 	pass
 
 func _ready():
 	EventBus.connect("update_attributes", _update_info)
 	EventBus.connect("update_resources", _update_resource)
+	EventBus.connect("building_cost", _building_cost)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("l_click"):
@@ -35,6 +39,9 @@ func _update_info(attributes):
 func _update_resource(resources):
 	resource.text = "x " + str(int(resource.text.substr(2,-1)) + resources)
 	pass
+
+func _building_cost(amount):
+	resource.text = "x " + str(int(resource.text.substr(2,-1)) - amount)
 
 func _on_popup_menu_id_pressed(id):
 	match id:
