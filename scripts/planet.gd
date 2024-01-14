@@ -4,6 +4,10 @@ extends Node3D
 
 var spin_deg:float = 0
 var orbit_deg:float = 0
+var level = 1
+
+var planetTypes = ["INDUSTRY", "RESIDENTIAL", "RESOURCE-RICH"]
+var characters = 'abcdefghijklmnopqrstuvwxyz1234567890 '
 
 @export var planet_mesh:MeshInstance3D
 @export var root:Node3D
@@ -14,6 +18,10 @@ var orbit_deg:float = 0
 var basic_resource = 0:
 	set(val):
 		basic_resource = val
+		var t = load("res://scenes/3d_label.tscn").instantiate()
+		t.text = "LEVEL UP!"
+		add_child(t)
+		info.planet_status = str(basic_resource + 1)
 		print("resource increased!")
 
 func _ready() -> void:
@@ -22,9 +30,29 @@ func _ready() -> void:
 	orbit_deg = randi_range(1, 5)
 	randomize()
 	#info.resource_local_to_scene = true
-	info.planet_name = str(randi())
-	info.planet_type = str(randi())
-	info.planet_status = "UNREGISTERED"
+	info.planet_name = generate_word(characters, randi_range(5,12))
+	info.planet_type = planetTypes[randi_range(0,2)]
+	info.planet_status = str(level)
+	
+	match info.planet_type:
+		"INDUSTRY":
+			var t = load("res://assets/models/environment/Factory.glb").instantiate()
+			add_child(t)
+			t.position = Vector3(position.x, position.y + 0.45, position.z)
+			t.scale = planet_mesh.scale
+			pass
+		"RESIDENTIAL":
+			var t = load("res://assets/models/environment/Residentials.glb").instantiate()
+			add_child(t)
+			t.position = Vector3(position.x, position.y + 0.45, position.z)
+			t.scale = planet_mesh.scale
+			pass
+		"RESOURCE-RICH":
+			var t = load("res://assets/models/environment/FoodResource.glb").instantiate()
+			add_child(t)
+			t.position = Vector3(position.x, position.y + 0.45, position.z)
+			t.scale = planet_mesh.scale
+			pass
 	
 	$Timer.wait_time = info.production_seed * 3
 func _physics_process(delta: float) -> void:
@@ -66,6 +94,12 @@ func produce_material():
 	#if closest != INF:
 		#print("closest rail at: ", closest)
 
+func generate_word(chars, length):
+	var word: String
+	var n_char = len(chars)
+	for i in range(length):
+		word += chars[randi()% n_char]
+	return word
 
 func _on_mouse_exited() -> void:
 	EventBus.emit_signal("update_attributes", PlanetAttributes.new())
@@ -85,5 +119,10 @@ func _on_timer_timeout() -> void:
 	add_child(res)
 	res.scale = Vector3(1, 1, 1)
 	res.global_position = global_position + Vector3(0, 0, 0)
+	res.type = info.planet_type
+	var t = load("res://scenes/3d_label.tscn").instantiate()
+	t.text = str(res.type)
+	t.disappear = false
+	res.add_child(t)
 	get_tree().create_tween().tween_property(res, "global_position", res.global_position + Vector3(5,0, 0).rotated(Vector3(0, 1, 0), randf() * 2 * PI), 2)
 	res.from = self

@@ -28,10 +28,13 @@ func _input(event):
 
 func _update_info(attributes):
 	var placeholder = [attributes.planet_name, attributes.planet_type, attributes.planet_status]
-	info.text = "Planet Info\n\nName: %s\n\nType: %s\n\nStatus: %s" % placeholder
+	info.text = "Planet Info\n\nName: %s\n\nType: %s\n\nLevel: %s" % placeholder
 	pass
 
 func _on_popup_menu_id_pressed(id):
+	match id:
+		0:
+			print(get_node("../CameraController").current_point())
 	print_debug(id)
 	pass # Replace with function body.
 

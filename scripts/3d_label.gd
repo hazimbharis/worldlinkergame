@@ -5,9 +5,14 @@ const CHAR_READ_RATE = 0.1
 @onready var viewport = $SubViewport
 @onready var label = $SubViewport/Label
 var text = "NEW CONNECTION"
+var disappear = true
 func _ready():
 	hide_textbox()
-	add_text(text)
+	match disappear:
+		true:
+			add_text(text)
+		false:
+			add_text_remain(text)
 
 func hide_textbox():
 	label.text = ""
@@ -27,3 +32,9 @@ func add_text(next_text):
 	await tween.finished
 	
 	queue_free()
+
+func add_text_remain(next_text):
+	label.text = next_text
+	show_textbox()
+	var tween = get_tree().create_tween()
+	tween.tween_property(label, "visible_ratio", 1.0, len(next_text) * CHAR_READ_RATE)
