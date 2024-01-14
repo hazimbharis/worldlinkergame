@@ -7,7 +7,7 @@ const CHAR_READ_RATE = 0.1
 
 func _ready():
 	hide_textbox()
-	add_text("PLANET CONNECTED!")
+	add_text("NEW CONNECTION!")
 
 func hide_textbox():
 	label.text = ""
@@ -22,12 +22,8 @@ func add_text(next_text):
 	show_textbox()
 	var tween = get_tree().create_tween()
 	tween.tween_property(label, "visible_ratio", 1.0, len(next_text) * CHAR_READ_RATE)
-	tween.connect("finished", on_tween_finished)
-
-func on_tween_finished():
-	var tween = get_tree().create_tween()
-	tween.tween_property(label, "modulate:a", 0.0, len(label.text) * CHAR_READ_RATE)
-	tween.connect("finished", on_2nd_tween_finished)
-
-func on_2nd_tween_finished():
+	tween.tween_property(label, "modulate:a", 0.0, len(label.text) * CHAR_READ_RATE).set_delay(len(next_text) * CHAR_READ_RATE)
+	
+	await tween.finished
+	
 	queue_free()

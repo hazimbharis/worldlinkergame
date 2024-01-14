@@ -57,12 +57,12 @@ planet_name = "Jaddy Wriggles"
 planet_status = "Unconnected"
 
 [node name="Planet" type="Area3D" node_paths=PackedStringArray("planet_mesh")]
-transform = Transform3D(0.512813, 0, -0.858499, 0, 1, 0, 0.858499, 0, 0.512813, 0, 0, 0)
+transform = Transform3D(-0.501811, 0, 1.93602, 0, 2, 0, -1.93602, 0, -0.501811, 0, 0, 0)
 script = ExtResource("1_a4kjc")
 planet_mesh = NodePath("Mesh")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.967961, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.984808, 0, 0.173648, 0, 0.964674, 0, -0.173648, 0, 0.984808, 0, 0, 0)
 mesh = SubResource("ArrayMesh_mvxai")
 skeleton = NodePath("")
 

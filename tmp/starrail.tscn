@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c72c2khpa2aoh"]
+
+[ext_resource type="Script" path="res://tmp/planet_connection.gd" id="1_838e8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfjob"]
+emission = Color(0.435294, 0.894118, 0.705882, 1)
+
+[node name="Rail" type="Node3D" node_paths=PackedStringArray("start", "end", "path")]
+script = ExtResource("1_838e8")
+start = NodePath("Start")
+end = NodePath("End")
+path = NodePath("Path3D")
+
+[node name="Start" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.00808)
+gizmo_extents = 1.0
+
+[node name="End" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45421, 0, -0.239999)
+visible = false
+gizmo_extents = 1.0
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(-0.1, 0, -0.1, 0.1, 0.1, 0.1, 0.1, 0)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 1
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.5
+path_joined = false
+material = SubResource("StandardMaterial3D_yfjob")
+
+[node name="Path3D" type="Path3D" parent="."]
