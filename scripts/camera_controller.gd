@@ -8,25 +8,25 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-	trail.visible = false
+	#trail.visible = false
 	EventBus.connect("focused_at", on_new_focus_point)
 	
-	trail.set_process(false)
+	#trail.set_process(false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	_move(delta)
-	#if Input.is_action_just_pressed("l_click"):
+	if Input.is_action_just_pressed("l_click"):
+		trail.restart()
+		trail.visible = true
+		#trail.set_process(true)
+	if Input.is_action_just_released("l_click"):
+		trail.visible = false
 		#trail.restart()
-		#trail.visible = true
-		##trail.set_process(true)
-	#if Input.is_action_just_released("l_click"):
-		#trail.visible = false
-		##trail.restart()
-		##trail.set_process(false)
-	#if Input.is_action_pressed("l_click"):
-		#trail.position = current_point()
+		#trail.set_process(false)
+	if Input.is_action_pressed("l_click"):
+		trail.position = current_point()
 		
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

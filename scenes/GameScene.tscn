@@ -80,6 +80,7 @@ script = ExtResource("5_c0j7f")
 rail_node = ExtResource("8_0dkg3")
 
 [node name="Rail" parent="Rails" instance=ExtResource("8_0dkg3")]
+process_mode = 4
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_sfxou")]
 unique_name_in_owner = true
@@ -88,10 +89,9 @@ unique_name_in_owner = true
 max_dist = 500
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1239, 0, 0)
 visible = false
-amount = 100
+amount = 250
 process_material = SubResource("ParticleProcessMaterial_c7100")
 draw_pass_1 = SubResource("QuadMesh_8tf21")
 

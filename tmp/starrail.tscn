@@ -21,7 +21,7 @@ visible = false
 gizmo_extents = 1.0
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-polygon = PackedVector2Array(-0.1, 0, -0.1, 0.1, 0.1, 0.1, 0.1, 0)
+polygon = PackedVector2Array(-0.5, 0, -0.5, 0.25, 0.5, 0.25, 0.5, 0)
 mode = 2
 path_node = NodePath("../Path3D")
 path_interval_type = 0
