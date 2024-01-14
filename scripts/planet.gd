@@ -208,7 +208,16 @@ func _on_timer_timeout() -> void:
 		res.scale = Vector3(0.5, 0.5, 0.5)
 		res.global_position = global_position
 		res.type = info.planet_type
+		if info.planet_type == "RESIDENTIAL":
+			res.get_node("MeshInstance3D").visible = false
+		else:
+			res.get_node("MeshInstance3D2").visible = false
 		var t = load("res://scenes/3d_label.tscn").instantiate()
+				#t.text = str(res.type)
+		if info.planet_type == "RESIDENTIAL":
+			t.text = "WORKFORCE"
+		else:
+			t.text = "FOOD"
 		t.text = str(res.type)
 		t.disappear = false
 		res.add_child(t)
