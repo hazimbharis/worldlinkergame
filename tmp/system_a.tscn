@@ -180,13 +180,8 @@ transform = Transform3D(-0.119958, 0, -0.740345, 0, 0.75, 0, 0.740345, 0, -0.119
 curve = SubResource("Curve3D_4ofne")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D"]
-<<<<<<< Updated upstream
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -5.89127, 2.29478e-06, 14.1334)
-progress = 35.7629
-=======
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 8.5593, 2.29478e-06, 16.3105)
-progress = 50.3793
->>>>>>> Stashed changes
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -19.1828, 2.29478e-06, 31.3989)
+progress = 11.6621
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -201,13 +196,8 @@ transform = Transform3D(-0.319888, 0, -1.97425, 0, 2, 0, 1.97425, 0, -0.319888, 
 curve = SubResource("Curve3D_4ofne")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D2"]
-<<<<<<< Updated upstream
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 11.9661, 2.29478e-06, 23.7779)
-progress = 59.039
-=======
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 12.3449, 2.29478e-06, 37.4976)
-progress = 73.6565
->>>>>>> Stashed changes
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -6.62505, 2.29478e-06, 14.4028)
+progress = 34.938
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -223,13 +213,8 @@ transform = Transform3D(-0.39986, 0, -1.48069, 0, 1.5, 0, 2.46782, 0, -0.239916,
 curve = SubResource("Curve3D_qigem")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D3"]
-<<<<<<< Updated upstream
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 63.0459, -2.43187e-05, 11.5967)
-progress = 146.271
-=======
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 32.2805, -0.0052488, 56.9174)
-progress = 201.504
->>>>>>> Stashed changes
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 11.1861, -2.43187e-05, -40.1348)
+progress = 55.1831
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -245,13 +230,8 @@ transform = Transform3D(-0.319888, 0, -1.97425, 0, 2, 0, 1.97425, 0, -0.319888, 
 curve = SubResource("Curve3D_v7hdl")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D4"]
-<<<<<<< Updated upstream
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -1.31901, -2.43187e-05, 8.5294)
-progress = 97.9268
-=======
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 34.3066, -2.43187e-05, 44.6013)
-progress = 155.519
->>>>>>> Stashed changes
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -5.79675, -2.43187e-05, 80.9922)
+progress = 2.92289
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -267,13 +247,8 @@ transform = Transform3D(-0.319888, 0, -1.97425, 0, 2, 0, 1.97425, 0, -0.319888, 
 curve = SubResource("Curve3D_0ujxb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D5"]
-<<<<<<< Updated upstream
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -14.6703, -2.43187e-05, 84.7492)
-progress = 35.5036
-=======
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 0.981812, -2.43187e-05, 61.1773)
-progress = 76.2397
->>>>>>> Stashed changes
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 4.77149, -2.43187e-05, 68.0041)
+progress = 67.7857
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -343,13 +318,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.614, 0, 29.1841)
 curve = SubResource("Curve3D_6k3yn")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D6"]
-<<<<<<< Updated upstream
-transform = Transform3D(-0.492664, 0, 0.870214, 0, 1, 0, -0.870214, 0, -0.492664, -430.197, 0, 39.673)
-progress = 316.369
-=======
-transform = Transform3D(0.694805, 0, 0.719191, 0, 1, 0, -0.719191, 0, 0.694805, -498.511, 0, 51.9265)
-progress = 399.033
->>>>>>> Stashed changes
+transform = Transform3D(-0.906023, 0, 0.423216, 0, 1, 0, -0.423216, 0, -0.906023, -348.242, 0, -61.461)
+progress = 180.003
 script = ExtResource("1_pb5d0")
 speed = 0.01
 
