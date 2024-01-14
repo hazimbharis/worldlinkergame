@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dl7ik1bw5ss7w"]
+[gd_scene load_steps=19 format=3 uid="uid://dl7ik1bw5ss7w"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tb4hl"]
 [ext_resource type="Texture2D" uid="uid://d0pgtsff2or7p" path="res://assets/models/environment/starsbackground.png" id="2_75pya"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://fnjs10vv8vmr" path="res://tmp/stars.tscn" id="6_tmhey"]
 [ext_resource type="PackedScene" uid="uid://c72c2khpa2aoh" path="res://tmp/starrail.tscn" id="8_0dkg3"]
 [ext_resource type="Texture2D" uid="uid://cts41etp6hsip" path="res://assets/sparkle.png" id="8_pok27"]
+[ext_resource type="AudioStream" uid="uid://bee3u1sxwgc23" path="res://assets/musics/The Planets; Neptune - Gustav Holst.mp3" id="11_ja0lb"]
 [ext_resource type="PackedScene" uid="uid://wiphvr2otfsv" path="res://tmp/system_a.tscn" id="11_qxhfv"]
+[ext_resource type="PackedScene" uid="uid://b75etd08fnnrp" path="res://assets/models/environment/Fence.glb" id="12_hxadf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yvj02"]
 panorama = ExtResource("2_75pya")
@@ -84,3 +86,17 @@ draw_pass_1 = SubResource("QuadMesh_8tf21")
 
 [node name="SystemA" parent="." instance=ExtResource("11_qxhfv")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ja0lb")
+volume_db = 4.685
+autoplay = true
+
+[node name="Fence2" parent="." instance=ExtResource("12_hxadf")]
+transform = Transform3D(0.599453, 0, 0.253885, 0, 0.651, 0, -0.253885, 0, 0.599453, -8.98202, 0, 5.87155)
+
+[node name="Fence3" parent="." instance=ExtResource("12_hxadf")]
+transform = Transform3D(0.610562, 0, 0.225866, 0, 0.651, 0, -0.225866, 0, 0.610562, -12.0611, 0, 7.0682)
+
+[node name="Fence4" parent="." instance=ExtResource("12_hxadf")]
+transform = Transform3D(0.600127, 0, 0.138936, 0, 0.616, 0, -0.138936, 0, 0.600127, -15.1653, 0.207617, 8.01183)
