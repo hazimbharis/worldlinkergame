@@ -39,6 +39,14 @@ func _process(delta: float) -> void:
 		#print(points.size())
 		if Input.is_action_just_released("l_click"):
 		#if randi() % 10 == 5:
+			if (int(get_node("../../CanvasLayer").resource.text.substr(2,-1)) - dist*2 < 0): 
+				var t = load("res://scenes/3d_label.tscn").instantiate()
+				t.text = str("Not enough resources")
+				t.position = self.position
+				get_parent().add_child(t)
+				print("too much")
+				queue_free()
+				return
 			var curve = Curve3D.new()
 			for p in points:
 				curve.add_point(p)
@@ -51,8 +59,10 @@ func _process(delta: float) -> void:
 			end.visible = true
 			created = true
 			print("COST!!:(if not enough dont build) ", dist*2)
+			EventBus.emit_signal("building_cost",dist*2)
 	else:
 		if points.size() < 5:
+			EventBus.emit_signal("building_cost",-dist*2)
 			queue_free()
 		#set_process(false)
 	if Input.is_action_just_pressed("ui_right"):
