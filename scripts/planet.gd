@@ -52,7 +52,7 @@ func _ready() -> void:
 			t.scale = planet_mesh.scale
 			pass
 		"RESOURCE-RICH":
-			var t = load("res://assets/models/environment/FoodResource.glb").instantiate()
+			var t = load("res://assets/models/environment/FruitTree.glb").instantiate()
 			add_child(t)
 			t.position = Vector3(position.x, position.y + 0.45, position.z)
 			t.scale = planet_mesh.scale
