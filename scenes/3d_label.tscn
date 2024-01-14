@@ -23,6 +23,7 @@ script = ExtResource("1_u0s50")
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 canvas_item_default_texture_filter = 0
+size = Vector2i(1024, 512)
 script = ExtResource("2_78i6t")
 
 [node name="Label" type="Label" parent="SubViewport"]

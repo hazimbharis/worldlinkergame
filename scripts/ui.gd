@@ -2,15 +2,11 @@ extends CanvasLayer
 
 # var textpopup = load("res://text_popup.tscn")
 
-enum PopupIds {
-	ADD_NODE
-}
+var total_cost : float = 0.0
 
-var _last_mouse_position
-
-@onready var _popup_menu = $PopupMenu
 @onready var info = $InfoboxContainer/MarginContainer/HBoxContainer/Label
 @onready var resource = $ResourceContainer/HBoxContainer/Label
+@onready var indicator = $Label
 
 func _create_text(mouse_position):
 	#var t = load("res://text_popup.tscn").instantiate()
@@ -21,13 +17,15 @@ func _create_text(mouse_position):
 func _ready():
 	EventBus.connect("update_attributes", _update_info)
 	EventBus.connect("update_resources", _update_resource)
-	EventBus.connect("building_cost", _building_cost)
-	_popup_menu.add_item("Add Rail Node", PopupIds.ADD_NODE)
 
-func _input(event):
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
-		_last_mouse_position = get_viewport().get_mouse_position()
-		_popup_menu.popup(Rect2(_last_mouse_position.x, _last_mouse_position.y, 100, 100))
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("l_click"):
+		indicator.visible = true
+	if Input.is_action_just_released("l_click"):
+		indicator.visible = false
+	if Input.is_action_pressed("l_click"):
+		indicator.text = "Total cost: " + str(total_cost)
+		indicator.position = Vector2(get_viewport().get_mouse_position().x-70,get_viewport().get_mouse_position().y-40)
 
 func _update_info(attributes):
 	var placeholder = [attributes.planet_name, attributes.planet_type, attributes.planet_status]
@@ -37,9 +35,6 @@ func _update_info(attributes):
 func _update_resource(resources):
 	resource.text = "x " + str(int(resource.text.substr(2,-1)) + resources)
 	pass
-
-func _building_cost(amount):
-	resource.text = "x " + str(int(resource.text.substr(2,-1)) - amount)
 
 func _on_popup_menu_id_pressed(id):
 	match id:
