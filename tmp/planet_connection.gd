@@ -80,17 +80,9 @@ func pass_resource(lifetime,type):
 	print("passeD?")
 	var res = resource.instantiate()
 	res.type = type
-	res.scale = Vector3(0.5, 0.5, 0.5)
 	res.lifetime = lifetime
-	if type == "RESIDENTIAL":
-		res.get_node("MeshInstance3D").visible = false
-	else:
-		res.get_node("MeshInstance3D2").visible = false
 	var t = load("res://scenes/3d_label.tscn").instantiate()
-	if type == "RESIDENTIAL":
-		t.text = "WORKFORCE"
-	else:
-		t.text = "FOOD"
+	t.text = str(res.type)
 	t.disappear = false
 	res.add_child(t)
 	res.from = $Start/IN

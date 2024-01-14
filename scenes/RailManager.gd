@@ -9,6 +9,12 @@ enum building {
 }
 var current = building.RAIL
 var rotation = 0
+const whitebox = preload('res://resources/blackbox.tres')
+const blackbox = preload('res://resources/whitebox.tres')
+
+#@export var hotbar1:Sprite2D
+#@export var hotbar2:Sprite2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -30,11 +36,34 @@ func _process(delta: float) -> void:
 			
 	if Input.is_action_just_pressed("1"):
 		current = building.RAIL
+		EventBus.emit_signal("change_color", 0)
+		#var h1:ShaderMaterial = %HotbarContainer/hotbara.material
+		#h1.set_shader_parameter("source", Color(1.0, 0.0, 0.0, 1.0))
+		
+		#var h2:ShaderMaterial = %HotbarContainer/hotbarb.material
+		#h2.set_shader_parameter("source", Color(0.0, 0.0, 0.0, 1.0))
+		#get_node("../CanvasLayer").option1.add_theme_stylebox_override("normal", whitebox)
+		#get_node("../CanvasLayer").option2.add_theme_stylebox_override("normal", blackbox)
+		#get_node("../CanvasLayer").option3.add_theme_stylebox_override("normal", blackbox)
 		#3d print switched
 	if Input.is_action_just_pressed("2"):
 		current = building.BLOWER
+		EventBus.emit_signal("change_color", 1)
+		#var h1:ShaderMaterial = %HotbarContainer/hotbara.material
+		#h1.set_shader_parameter("source", Color(0.0, 0.0, 0.0, 1.0))
+		#
+		#var h2:ShaderMaterial = %HotbarContainer/hotbarb.material
+		#h2.set_shader_parameter("source", Color(1.0, 0.0, 0.0, 1.0))
+		
+		#get_node("../CanvasLayer").option1.add_theme_stylebox_override("normal", blackbox)
+		#get_node("../CanvasLayer").option2.add_theme_stylebox_override("normal", whitebox)
+		#get_node("../CanvasLayer").option3.add_theme_stylebox_override("normal", blackbox)
 		#3d print switched
-	
+	#if Input.is_action_just_pressed("3"):
+		#current = building.FENCE
+		#get_node("../CanvasLayer").option1.add_theme_stylebox_override("normal", blackbox)
+		#get_node("../CanvasLayer").option2.add_theme_stylebox_override("normal", blackbox)
+		#get_node("../CanvasLayer").option3.add_theme_stylebox_override("normal", whitebox)
 
 func current_point():
 	var cam = get_viewport().get_camera_3d()

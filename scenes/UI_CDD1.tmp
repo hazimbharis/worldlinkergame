@@ -1,17 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2r0qve1tdsvx"]
+[gd_scene load_steps=11 format=3 uid="uid://d2r0qve1tdsvx"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_0y42q"]
 [ext_resource type="FontFile" uid="uid://c0buhu5smsj6n" path="res://Kitchen Sink.ttf" id="2_6f6p1"]
 [ext_resource type="Texture2D" uid="uid://b8lqhl2hhkkdv" path="res://gear.png" id="3_i3ti4"]
-[ext_resource type="StyleBox" uid="uid://67o4flbcou6h" path="res://resources/whitebox.tres" id="4_2ecxu"]
 [ext_resource type="Texture2D" uid="uid://bkwoyxmldx6in" path="res://pipe.png" id="4_abe57"]
 [ext_resource type="Texture2D" uid="uid://dkfwko26wv5gi" path="res://blower.png" id="5_f8trp"]
-[ext_resource type="StyleBox" uid="uid://dv5lysopd4ypx" path="res://scenes/normal.tres" id="6_4oxxk"]
 [ext_resource type="Texture2D" uid="uid://dbbomj1ssp2k6" path="res://fence.png" id="6_ng865"]
-[ext_resource type="StyleBox" uid="uid://cglxyc8smmvl6" path="res://resources/blackbox.tres" id="7_5abjh"]
-[ext_resource type="Texture2D" uid="uid://cpm65xhqtwipj" path="res://icon.svg" id="10_85kmc"]
-[ext_resource type="Script" path="res://scenes/hotbara.gd" id="11_3xsnw"]
-[ext_resource type="Script" path="res://scenes/horbarb.gd" id="12_jkwax"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmbjp"]
 bg_color = Color(0, 0, 0, 1)
@@ -24,37 +18,14 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="Shader" id="Shader_28uwy"]
-code = "shader_type canvas_item;
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpcsr"]
+bg_color = Color(1, 1, 1, 1)
 
-uniform vec4 source;
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoiog"]
+bg_color = Color(0, 0, 0, 1)
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	COLOR = source;
-	// Called for every pixel the material is visible on.
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0wyl"]
-shader = SubResource("Shader_28uwy")
-shader_parameter/source = Vector4(0, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_juqvq"]
-shader = SubResource("Shader_28uwy")
-shader_parameter/source = Vector4(0, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7dif"]
-shader = SubResource("Shader_28uwy")
-shader_parameter/source = null
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auigg"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Infobox" type="CanvasLayer"]
 script = ExtResource("1_0y42q")
@@ -138,22 +109,19 @@ theme_override_fonts/font = ExtResource("2_6f6p1")
 text = "Total cost: 0"
 
 [node name="HotbarContainer" type="HBoxContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.5
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -248.0
-offset_top = -160.0
-offset_right = 242.0
-offset_bottom = -38.0
+offset_left = 93.0
+offset_top = -170.0
+offset_right = 583.0
+offset_bottom = -48.0
 grow_vertical = 0
 
 [node name="Panel1" type="Panel" parent="HotbarContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("4_2ecxu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cpcsr")
 
 [node name="MarginContainer" type="MarginContainer" parent="HotbarContainer/Panel1"]
 layout_mode = 1
@@ -182,10 +150,9 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Panel2" type="Panel" parent="HotbarContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("6_4oxxk")
+theme_override_styles/panel = SubResource("StyleBoxFlat_yoiog")
 
 [node name="MarginContainer" type="MarginContainer" parent="HotbarContainer/Panel2"]
 layout_mode = 1
@@ -212,10 +179,9 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Panel3" type="Panel" parent="HotbarContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("7_5abjh")
+theme_override_styles/panel = SubResource("StyleBoxFlat_auigg")
 
 [node name="MarginContainer" type="MarginContainer" parent="HotbarContainer/Panel3"]
 layout_mode = 1
@@ -240,36 +206,3 @@ expand_mode = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="hotbara" type="Sprite2D" parent="HotbarContainer"]
-unique_name_in_owner = true
-clip_children = 2
-material = SubResource("ShaderMaterial_f0wyl")
-position = Vector2(79, 64)
-texture = ExtResource("10_85kmc")
-script = ExtResource("11_3xsnw")
-
-[node name="Sprite2D" type="Sprite2D" parent="HotbarContainer/hotbara"]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_abe57")
-
-[node name="horbarb" type="Sprite2D" parent="HotbarContainer"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_juqvq")
-position = Vector2(242, 62)
-texture = ExtResource("10_85kmc")
-script = ExtResource("12_jkwax")
-
-[node name="Sprite2D" type="Sprite2D" parent="HotbarContainer/horbarb"]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("5_f8trp")
-
-[node name="Sprite2D3" type="Sprite2D" parent="HotbarContainer"]
-visible = false
-material = SubResource("ShaderMaterial_y7dif")
-position = Vector2(408, 63)
-texture = ExtResource("10_85kmc")
-
-[node name="Sprite2D" type="Sprite2D" parent="HotbarContainer/Sprite2D3"]
-scale = Vector2(0.155, 0.155)
-texture = ExtResource("6_ng865")
