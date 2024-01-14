@@ -21,6 +21,7 @@ func _create_text(mouse_position):
 func _ready():
 	EventBus.connect("update_attributes", _update_info)
 	EventBus.connect("update_resources", _update_resource)
+	EventBus.connect("building_cost", _building_cost)
 	_popup_menu.add_item("Add Rail Node", PopupIds.ADD_NODE)
 
 func _input(event):
@@ -36,6 +37,9 @@ func _update_info(attributes):
 func _update_resource(resources):
 	resource.text = "x " + str(int(resource.text.substr(2,-1)) + resources)
 	pass
+
+func _building_cost(amount):
+	resource.text = "x " + str(int(resource.text.substr(2,-1)) - amount)
 
 func _on_popup_menu_id_pressed(id):
 	match id:

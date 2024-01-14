@@ -4,7 +4,7 @@ const CHAR_READ_RATE = 0.1
 
 @onready var viewport = $SubViewport
 @onready var label = $SubViewport/Label
-var text = "NEW CONNECTION"
+var text = "OUCH!"
 var disappear = true
 func _ready():
 	hide_textbox()
