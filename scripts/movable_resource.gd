@@ -33,12 +33,12 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	#print(area, " entered!")
 	if area.is_in_group("planet"):
 		print("touched planet")
-		if area != from:
+		if area.info.planet_type != type:
 			area.basic_resource += 1
 			call_deferred("queue_free")
 	elif area.is_in_group("input"):
 		if area != from:
-			area.get_parent().get_parent().pass_resource(lifetime)
+			area.get_parent().get_parent().pass_resource(lifetime,type)
 			call_deferred("queue_free")
 		print("touched_start")
 	elif area.is_in_group("output"):

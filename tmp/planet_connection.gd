@@ -16,6 +16,7 @@ var launch_speed = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#csgpoly.get_collision_layer_value()
+	print_debug(get_tree())
 	pass
 
 
@@ -49,7 +50,7 @@ func _process(delta: float) -> void:
 			start.visible = true
 			end.visible = true
 			created = true
-			print("COST!!:(if not enough dont build) ", dist*10)
+			print("COST!!:(if not enough dont build) ", dist*2)
 	else:
 		if points.size() < 5:
 			queue_free()
@@ -64,10 +65,15 @@ func current_point():
 	var ray_to = ray_from +  cam.project_ray_normal(mouse_pos) * 10000
 	return Plane.PLANE_XZ.intersects_ray(ray_from, ray_to)
 
-func pass_resource(lifetime):
+func pass_resource(lifetime,type):
 	print("passeD?")
 	var res = resource.instantiate()
+	res.type = type
 	res.lifetime = lifetime
+	var t = load("res://scenes/3d_label.tscn").instantiate()
+	t.text = str(res.type)
+	t.disappear = false
+	res.add_child(t)
 	res.from = $Start/IN
 	$Path3D.call_deferred("add_child", res)
 

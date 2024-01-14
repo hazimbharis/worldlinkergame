@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	
 	#if !visualization:
 	var overlap = area3d.get_overlapping_areas()
-	print(overlap)
+	#print(overlap)
 	for child in overlap:
 		if child.get_parent().is_in_group("resource"):
 			var res = child.get_parent()
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	if selecting:
 		if Input.is_action_just_pressed("rotate_key"):
 			rotate(Vector3(0, 1, 0), deg_to_rad(45))
-			print(rotation.y)
+			#print(rotation.y)
 
 func current_point():
 	var cam = get_viewport().get_camera_3d()

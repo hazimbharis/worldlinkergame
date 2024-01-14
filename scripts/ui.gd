@@ -10,6 +10,7 @@ var _last_mouse_position
 
 @onready var _popup_menu = $PopupMenu
 @onready var info = $InfoboxContainer/MarginContainer/HBoxContainer/Label
+@onready var resource = $ResourceContainer/HBoxContainer/Label
 
 func _create_text(mouse_position):
 	#var t = load("res://text_popup.tscn").instantiate()
@@ -19,6 +20,7 @@ func _create_text(mouse_position):
 
 func _ready():
 	EventBus.connect("update_attributes", _update_info)
+	EventBus.connect("update_resources", _update_resource)
 	_popup_menu.add_item("Add Rail Node", PopupIds.ADD_NODE)
 
 func _input(event):
@@ -29,6 +31,10 @@ func _input(event):
 func _update_info(attributes):
 	var placeholder = [attributes.planet_name, attributes.planet_type, attributes.planet_status]
 	info.text = "Planet Info\n\nName: %s\n\nType: %s\n\nLevel: %s" % placeholder
+	pass
+
+func _update_resource(resources):
+	resource.text = "x " + str(int(resource.text.substr(2,-1)) + resources)
 	pass
 
 func _on_popup_menu_id_pressed(id):

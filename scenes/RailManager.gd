@@ -30,8 +30,10 @@ func _process(delta: float) -> void:
 			
 	if Input.is_action_just_pressed("1"):
 		current = building.RAIL
+		#3d print switched
 	if Input.is_action_just_pressed("2"):
 		current = building.BLOWER
+		#3d print switched
 	
 
 func current_point():

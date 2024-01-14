@@ -180,8 +180,8 @@ transform = Transform3D(-0.119958, 0, -0.740345, 0, 0.75, 0, 0.740345, 0, -0.119
 curve = SubResource("Curve3D_4ofne")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D"]
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -11.7615, 2.29478e-06, 17.6422)
-progress = 28.8655
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -5.89127, 2.29478e-06, 14.1334)
+progress = 35.7629
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -196,8 +196,8 @@ transform = Transform3D(-0.319888, 0, -1.97425, 0, 2, 0, 1.97425, 0, -0.319888, 
 curve = SubResource("Curve3D_4ofne")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D2"]
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 9.73909, 2.29478e-06, 17.2491)
-progress = 52.1417
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 11.9661, 2.29478e-06, 23.7779)
+progress = 59.039
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -213,8 +213,8 @@ transform = Transform3D(-0.39986, 0, -1.48069, 0, 1.5, 0, 2.46782, 0, -0.239916,
 curve = SubResource("Curve3D_qigem")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D3"]
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 54.5961, -2.43187e-05, -10.2771)
-progress = 120.223
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 63.0459, -2.43187e-05, 11.5967)
+progress = 146.271
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -230,8 +230,8 @@ transform = Transform3D(-0.319888, 0, -1.97425, 0, 2, 0, 1.97425, 0, -0.319888, 
 curve = SubResource("Curve3D_v7hdl")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D4"]
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -24.902, -2.43187e-05, 20.0831)
-progress = 70.7787
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -1.31901, -2.43187e-05, 8.5294)
+progress = 97.9268
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -247,8 +247,8 @@ transform = Transform3D(-0.319888, 0, -1.97425, 0, 2, 0, 1.97425, 0, -0.319888, 
 curve = SubResource("Curve3D_0ujxb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D5"]
-transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, 3.71245, -2.43187e-05, 64.4416)
-progress = 71.502
+transform = Transform3D(0.999979, 0, 0, 0, 0.99997, 0, 0, 0, 0.999942, -14.6703, -2.43187e-05, 84.7492)
+progress = 35.5036
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("1_pb5d0")
@@ -318,8 +318,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.614, 0, 29.1841)
 curve = SubResource("Curve3D_6k3yn")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Planets/Path3D6"]
-transform = Transform3D(-0.492664, 0, 0.870214, 0, 1, 0, -0.870214, 0, -0.492664, -396.308, 0, 20.4873)
-progress = 277.426
+transform = Transform3D(-0.492664, 0, 0.870214, 0, 1, 0, -0.870214, 0, -0.492664, -430.197, 0, 39.673)
+progress = 316.369
 script = ExtResource("1_pb5d0")
 speed = 0.01
 
