@@ -133,8 +133,16 @@ func _on_timer_timeout() -> void:
 		res.scale = Vector3(0.5, 0.5, 0.5)
 		res.global_position = global_position
 		res.type = info.planet_type
+		if info.planet_type == "RESIDENTIAL":
+			res.get_node("MeshInstance3D").visible = false
+		else:
+			res.get_node("MeshInstance3D2").visible = false
 		var t = load("res://scenes/3d_label.tscn").instantiate()
-		t.text = str(res.type)
+		#t.text = str(res.type)
+		if info.planet_type == "RESIDENTIAL":
+			t.text = "WORKFORCE"
+		else:
+			t.text = "FOOD"
 		t.disappear = false
 		res.add_child(t)
 		#get_tree().create_tween().tween_property(res, "global_position", res.global_position + Vector3(5,0, 0).rotated(Vector3(0, 1, 0), randf() * 2 * PI), 2)
