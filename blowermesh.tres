@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=4 format=3 uid="uid://bxv7u2l3ua00r"]
 
-[ext_resource type="Texture2D" uid="uid://b6p64gpq0ewyp" path="res://assets/models/environment/Blower_BlowerTexture.png" id="1_6lw08"]
+[ext_resource type="Texture2D" uid="uid://1gcujg6vffcs" path="res://assets/models/environment/Blower_BlowerTexture.png" id="1_6lw08"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6o3t"]
 resource_name = "Blower"

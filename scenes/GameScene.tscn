@@ -59,9 +59,8 @@ environment = SubResource("Environment_ll5tq")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CameraController" parent="." node_paths=PackedStringArray("trail", "delete_raycast") instance=ExtResource("3_o6r2t")]
+[node name="CameraController" parent="." node_paths=PackedStringArray("trail") instance=ExtResource("3_o6r2t")]
 trail = NodePath("../GPUParticles3D")
-delete_raycast = NodePath("../RayCast3D")
 
 [node name="Planets" type="Node" parent="."]
 
