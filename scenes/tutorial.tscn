@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://ueclqseypbiu"]
+
+[ext_resource type="FontFile" uid="uid://c0buhu5smsj6n" path="res://Kitchen Sink.ttf" id="1_bj3rc"]
+[ext_resource type="Script" path="res://scenes/tutorial.gd" id="1_bn6xw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsyef"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2eus7"]
+font = ExtResource("1_bj3rc")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_lea0g"]
+font = ExtResource("1_bj3rc")
+font_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a87yl"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 16
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bn6xw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qsyef")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "TUTORIAL"
+label_settings = SubResource("LabelSettings_2eus7")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "you have just been appointed regional manager of XB45-IV!
+your task is to reroute the resources produced by the planets using pipes, blowers and barriers. your efficiency will be measured and ranked amongs this lethal company, where if you underperform your power gets turned off!
+wasd to move, scroll to zoom
+left click to place, drag to build pipe
+change building type in the hotbar with numbers
+there is an industry planet, and resource planet and a residential planet. industry wants the residential resource and the resource planets produce resources, the residential planet needs the food resource(red, juicy spherical object)
+good luck! and may the odds be every in your favour"
+label_settings = SubResource("LabelSettings_lea0g")
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 165.0
+offset_bottom = 86.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_bj3rc")
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+flat = true
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a87yl")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
