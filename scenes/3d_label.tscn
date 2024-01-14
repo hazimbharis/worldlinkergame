@@ -16,6 +16,7 @@ shader_parameter/speed = 5.0
 
 [node name="3DLabel" type="Sprite3D"]
 billboard = 1
+no_depth_test = true
 texture = SubResource("ViewportTexture_mlqos")
 script = ExtResource("1_u0s50")
 

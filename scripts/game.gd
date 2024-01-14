@@ -15,9 +15,12 @@ var branchSpawn = Vector2.ZERO
 #
 
 func _ready():
+	
+	EventBus.connect("focused_at", _create_text)
+	
 	# do this 20 times
 	var group = get_node("Planets")
-	for i in range(20):
+	for i in range(0):
 		randomize()
 		initialSpawn.x = randf_range(-40, 40)
 		initialSpawn.y = randf_range(-40, 40)
@@ -73,15 +76,24 @@ func _ready():
 				pass
 		
 		var new_planet = planet.instantiate()
-		new_planet.position.x = randf_range(-40, 40)
-		new_planet.position.z = randf_range(-40, 40)
+		#new_planet.position.x = randf_range(-40, 40)
+		#new_planet.position.z = randf_range(-40, 40)
 		planetChance = randi_range(0,2)
 		new_planet.get_node("PlanetInfo").attributes.planet_name = planetNames[randi_range(0,4)]
 		new_planet.get_node("PlanetInfo").attributes.planet_type = planetTypes[planetChance]
 		#new_planet.get_node("Mesh").mesh.surface_get_material(0).albedo_color = Color(randf(),randf(),randf())
 		#doesnt work, changes color of all planets
+		#var rotator = rotator.instantiate()
+		#rotator.add_child(new_planet)
+		#rotator.speed = randf_range(0.01, 0.5)
+		#rotator.position.x = randf_range(-40, 40)
+		#rotator.position.z = randf_range(-40, 40)
+		#rotator.rotation.y = randf() * 2 * PI
+		new_planet.position.x = randi_range(5, 10)
+		new_planet.position.z = randi_range(5, 10)
 		
-		group.add_child(new_planet)
+		
+		group.add_child.call_deferred(new_planet)
 
 func _create_text(mouse_position):
 	var t = load("res://scenes/3d_label.tscn").instantiate()

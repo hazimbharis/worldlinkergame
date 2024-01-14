@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck2iavx2qoj7d"]
+
+[ext_resource type="Script" path="res://scripts/movable_resource.gd" id="1_c2nwb"]
+[ext_resource type="Material" uid="uid://btgud5j6v3cg7" path="res://assets/movable_resource_mat.tres" id="2_lr175"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vox6j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nqu52"]
+
+[node name="Resource" type="PathFollow3D" node_paths=PackedStringArray("mesh") groups=["resource"]]
+top_level = true
+loop = false
+script = ExtResource("1_c2nwb")
+mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_lr175")
+mesh = SubResource("BoxMesh_vox6j")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_nqu52")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

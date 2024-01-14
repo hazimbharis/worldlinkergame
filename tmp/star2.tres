@@ -1,13 +1,78 @@
-[gd_resource type="ArrayMesh" load_steps=3 format=3 uid="uid://dihdsjmsniwgt"]
+[gd_resource type="ArrayMesh" load_steps=4 format=3 uid="uid://dihdsjmsniwgt"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8k0b"]
-emission_enabled = true
-emission = Color(0.388235, 0.454902, 0.980392, 1)
-emission_energy_multiplier = 1.5
-proximity_fade_distance = 4096.0
-distance_fade_mode = 2
-distance_fade_min_distance = 85.0
-distance_fade_max_distance = 100.0
+[sub_resource type="Shader" id="Shader_lkyie"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float distance_fade_min;
+uniform float distance_fade_max;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_emission : source_color, hint_default_black,filter_linear_mipmap,repeat_enable;
+uniform vec4 emission : source_color;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+varying float id;
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	id = float(INSTANCE_ID % 11) / 5.0;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	vec3 emission_tex = texture(texture_emission,base_uv).rgb;
+	EMISSION = (emission.rgb+emission_tex)*(1.0 + id);
+	{
+		float fade_distance = length(VERTEX);
+		const vec3 magic = vec3(0.06711056f, 0.00583715f, 52.9829189f);		float fade = clamp(smoothstep(distance_fade_min, distance_fade_max, fade_distance), 0.0, 1.0);
+		if (fade < 0.001 || fade < fract(magic.z * fract(dot(FRAGCOORD.xy, magic.xy)))) {
+			discard;
+		}
+	}
+
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43k3w"]
+render_priority = 0
+shader = SubResource("Shader_lkyie")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/distance_fade_min = 85.0
+shader_parameter/distance_fade_max = 100.0
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0.388235, 0.454902, 0.980392, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_f8j6d"]
 _surfaces = [{
@@ -30,7 +95,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 132,
 "index_data": PackedByteArray(39, 0, 10, 0, 44, 0, 39, 0, 4, 0, 10, 0, 53, 0, 46, 0, 58, 0, 53, 0, 36, 0, 46, 0, 56, 0, 15, 0, 29, 0, 56, 0, 42, 0, 15, 0, 8, 0, 33, 0, 17, 0, 8, 0, 22, 0, 33, 0, 25, 0, 60, 0, 31, 0, 25, 0, 51, 0, 60, 0, 0, 0, 6, 0, 2, 0, 9, 0, 16, 0, 12, 0, 18, 0, 23, 0, 20, 0, 26, 0, 32, 0, 30, 0, 35, 0, 40, 0, 37, 0, 43, 0, 47, 0, 45, 0, 49, 0, 54, 0, 52, 0, 57, 0, 61, 0, 59, 0, 19, 0, 7, 0, 1, 0, 19, 0, 21, 0, 7, 0, 5, 0, 17, 0, 11, 0, 5, 0, 8, 0, 17, 0, 14, 0, 33, 0, 28, 0, 14, 0, 17, 0, 33, 0, 31, 0, 22, 0, 25, 0, 31, 0, 33, 0, 22, 0, 48, 0, 24, 0, 19, 0, 48, 0, 50, 0, 24, 0, 27, 0, 60, 0, 55, 0, 27, 0, 31, 0, 60, 0, 58, 0, 51, 0, 53, 0, 58, 0, 60, 0, 51, 0, 34, 0, 53, 0, 48, 0, 34, 0, 36, 0, 53, 0, 56, 0, 46, 0, 42, 0, 56, 0, 58, 0, 46, 0, 44, 0, 36, 0, 39, 0, 44, 0, 46, 0, 36, 0, 1, 0, 38, 0, 34, 0, 1, 0, 3, 0, 38, 0, 41, 0, 10, 0, 13, 0, 41, 0, 44, 0, 10, 0, 19, 0, 34, 0, 48, 0, 19, 0, 1, 0, 34, 0),
-"material": SubResource("StandardMaterial3D_c8k0b"),
+"material": SubResource("ShaderMaterial_43k3w"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 62,

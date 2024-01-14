@@ -10,6 +10,10 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Infobox" type="CanvasLayer"]
 script = ExtResource("1_0y42q")
@@ -55,20 +59,21 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6f6p1")
 text = "Planet Info
 
-Name:
+Name: ???
 
-Type:
+Type: ???
 
-Status:"
+Level: ???"
 
 [node name="ResourceContainer" type="MarginContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -115.0
-offset_top = 13.0
-offset_right = -24.0
-offset_bottom = 53.0
+offset_left = -125.0
+offset_top = 14.0
+offset_right = -20.0
+offset_bottom = 54.0
+grow_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResourceContainer"]
 layout_mode = 2
@@ -81,7 +86,7 @@ expand_mode = 2
 [node name="Label" type="Label" parent="ResourceContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "x 00"
+text = "x 000"
 justification_flags = 226
 
 [node name="PopupMenu" type="PopupMenu" parent="."]

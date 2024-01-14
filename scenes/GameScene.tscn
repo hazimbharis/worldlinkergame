@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl7ik1bw5ss7w"]
+[gd_scene load_steps=17 format=3 uid="uid://dl7ik1bw5ss7w"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tb4hl"]
 [ext_resource type="Texture2D" uid="uid://d0pgtsff2or7p" path="res://assets/models/environment/starsbackground.png" id="2_75pya"]
 [ext_resource type="PackedScene" uid="uid://bkku6p607cwxt" path="res://scenes/camera_controller.tscn" id="3_o6r2t"]
-[ext_resource type="PackedScene" uid="uid://b5n1kwhbgreu0" path="res://scenes/BasicPlanet.tscn" id="4_0pgb7"]
-[ext_resource type="Script" path="res://scripts/LineDraw.gd" id="4_utimj"]
+[ext_resource type="Script" path="res://scenes/RailManager.gd" id="5_c0j7f"]
 [ext_resource type="PackedScene" uid="uid://d2r0qve1tdsvx" path="res://scenes/UI_Overlay.tscn" id="5_sfxou"]
+[ext_resource type="PackedScene" uid="uid://ee6avb43brth" path="res://scenes/blower.tscn" id="6_qty5k"]
 [ext_resource type="PackedScene" uid="uid://fnjs10vv8vmr" path="res://tmp/stars.tscn" id="6_tmhey"]
+[ext_resource type="PackedScene" uid="uid://c72c2khpa2aoh" path="res://tmp/starrail.tscn" id="8_0dkg3"]
+[ext_resource type="Texture2D" uid="uid://cts41etp6hsip" path="res://assets/sparkle.png" id="8_pok27"]
+[ext_resource type="PackedScene" uid="uid://wiphvr2otfsv" path="res://tmp/system_a.tscn" id="11_qxhfv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yvj02"]
 panorama = ExtResource("2_75pya")
@@ -19,6 +22,33 @@ background_mode = 2
 sky = SubResource("Sky_fer8n")
 adjustment_enabled = true
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c7100"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+damping_min = 2.0
+damping_max = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0aqgv"]
+transparency = 2
+alpha_scissor_threshold = 0.9
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("8_pok27")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_8tf21"]
+material = SubResource("StandardMaterial3D_0aqgv")
+size = Vector2(0.5, 0.5)
+
 [node name="main" type="Node3D"]
 script = ExtResource("1_tb4hl")
 
@@ -29,23 +59,27 @@ environment = SubResource("Environment_ll5tq")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CameraController" parent="." instance=ExtResource("3_o6r2t")]
-
-[node name="PathDrawer" type="Node3D" parent="."]
-script = ExtResource("4_utimj")
+[node name="CameraController" parent="." node_paths=PackedStringArray("trail") instance=ExtResource("3_o6r2t")]
+trail = NodePath("../GPUParticles3D")
 
 [node name="Planets" type="Node" parent="."]
 
-[node name="Planet" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(0.0270067, 0, 0.999633, 0, 1, 0, -0.999633, 0, 0.0270067, 0, 0, 0)
-
-[node name="Planet2" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(0.573527, 0, 0.819186, 0, 1, 0, -0.819186, 0, 0.573527, 3.36269, 0, -0.675941)
-
-[node name="Planet3" parent="Planets" instance=ExtResource("4_0pgb7")]
-transform = Transform3D(-0.382165, 0, -0.924094, 0, 1, 0, 0.924094, 0, -0.382165, 7.09917, 0, -1.25548)
+[node name="Building" type="Node" parent="."]
+script = ExtResource("5_c0j7f")
+rail_node = ExtResource("8_0dkg3")
+blow_node = ExtResource("6_qty5k")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_sfxou")]
+unique_name_in_owner = true
 
 [node name="MultiMeshStars" parent="." instance=ExtResource("6_tmhey")]
-max_dist = 700
+max_dist = 500
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1239, 0, 0)
+visible = false
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_c7100")
+draw_pass_1 = SubResource("QuadMesh_8tf21")
+
+[node name="SystemA" parent="." instance=ExtResource("11_qxhfv")]

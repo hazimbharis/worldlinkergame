@@ -12,6 +12,7 @@ enum PlanetStatus {
 	CONNECTED
 }
 
-@export var planet_type: String = "Industry"
-@export var planet_name: String = "Jaddy Wriggles"
-@export var planet_status: String = "Unconnected"
+@export var planet_type: String = "???"
+@export var planet_name: String = "???"
+@export var planet_status: String = "???"
+@export var production_seed:int = 5

@@ -37,7 +37,7 @@ func draw_path(path: Path3D):
 		var instancePath
 		instancePath = SRPath.instantiate()
 		instancePath.position = bakedPoints[i]
-		get_parent().add_child(instancePath)
+		get_parent().add_child.call_deferred(instancePath)
 		
 		
 	
