@@ -3,6 +3,7 @@ extends Node3D
 @export var movement_speed:float = 20
 @export var camera:Camera3D
 @export var trail:GPUParticles3D
+@export var delete_raycast:RayCast3D
 #signal focused
 
 # Called when the node enters the scene tree for the first time.
@@ -27,6 +28,13 @@ func _physics_process(delta: float) -> void:
 		#trail.set_process(false)
 	if Input.is_action_pressed("l_click"):
 		trail.position = current_point()
+	if Input.is_action_pressed("r_click"):
+		delete_raycast.position = current_point() - Vector3(0, 5, 0)
+		if delete_raycast.is_colliding():
+			print("raycast colliding!!!!")
+			var del = delete_raycast.get_collider()
+			if del.name == "CSGPolygon3D":
+				del.get_parent().destroy_path(Vector3(-100000, 1000000, 10000000))
 		
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

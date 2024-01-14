@@ -16,7 +16,82 @@ var characters = 'abcdefghijklmnopqrstuvwxyz1234567890 '
 @export var resource:PackedScene
 
 @onready var timer = $Timer
-
+var names = [
+	"Veridion Prime",
+	"Celestria IX",
+	"Nebula Nova",
+	"Aetheria Major",
+	"Quasar Vortex",
+	"Luminara Delta",
+	"Radiantia Minor",
+	"Galaxara Prime",
+	"Zephyria Sigma",
+	"Terraflare IX",
+	"Selenis Minor",
+	"Aurora Nexus",
+	"Ignition Nova",
+	"Equinoxia Major",
+	"Crystallara Prime",
+	"Pulsara Alpha",
+	"Stardust Haven",
+	"Ecliptica Minor",
+	"Magmara Delta",
+	"Zenithia Prime",
+	"Astralis Beta",
+	"Nova Haven",
+	"Harmonia Minor",
+	"Frostara IX",
+	"Solaris Delta",
+	"Lunaris Major",
+	"Vortexara Prime",
+	"Ignis Minor",
+	"Etheria Sigma",
+	"Aqualis Prime",
+	"Celestalis Beta",
+	"Nebula Nexus",
+	"Quanta Sigma",
+	"Zephyrion IX",
+	"Radiantara Prime",
+	"Galactis Minor",
+	"Crystallis Beta",
+	"Equinoxara Prime",
+	"Pulsaris Sigma",
+	"Stellaris Haven",
+	"Ignis Nexus",
+	"Auroria Sigma",
+	"Luminara Beta",
+	"Ecliptis Prime",
+	"Zenithara Minor",
+	"Nebulon Delta",
+	"Terraflaris Beta",
+	"Magmaris Sigma",
+	"Selenara Prime",
+	"Astralis Haven",
+	"Vortexia Beta",
+	"Radiaris Delta",
+	"Harmonis Minor",
+	"Frostara Delta",
+	"Solaris Beta",
+	"Lunara Sigma",
+	"Aetheris Prime",
+	"Ignition Beta",
+	"Equinoxia Sigma",
+	"Crystallara Delta",
+	"Pulsara Prime",
+	"Stardustara Minor",
+	"Zenithia Delta",
+	"Aurora Sigma",
+	"Nebula Haven",
+	"Celestria Sigma",
+	"Quasarara Prime",
+	"Luminara Delta",
+	"Radiantia Sigma",
+	"Galaxara Beta",
+	"Zephyria Prime",
+	"Terraflare Delta",
+	"Selenis Sigma",
+	# Add more names as needed
+]
 var basic_resource = 0:
 	set(val):
 		basic_resource = val
@@ -34,7 +109,7 @@ func _ready() -> void:
 	orbit_deg = randi_range(1, 5)
 	randomize()
 	#info.resource_local_to_scene = true
-	info.planet_name = generate_word(characters, randi_range(5,12))
+	info.planet_name = names.pick_random() + "-" + str(randi_range(99, 999))
 	info.planet_type = planetTypes[randi_range(0,2)]
 	info.planet_status = str(level)
 	
@@ -112,7 +187,7 @@ func _on_mouse_exited() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	print(body.name)
 	if body.name == "CSGPolygon3D":
-		body.get_parent().destroy_path()
+		body.get_parent().destroy_path(body.position)
 		#print(body, " entered!")
 
 

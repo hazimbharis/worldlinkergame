@@ -11,11 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://cts41etp6hsip" path="res://assets/sparkle.png" id="8_pok27"]
 [ext_resource type="PackedScene" uid="uid://wiphvr2otfsv" path="res://tmp/system_a.tscn" id="11_qxhfv"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yvj02"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c8cbv"]
 panorama = ExtResource("2_75pya")
 
 [sub_resource type="Sky" id="Sky_fer8n"]
-sky_material = SubResource("PanoramaSkyMaterial_yvj02")
+sky_material = SubResource("PanoramaSkyMaterial_c8cbv")
 
 [sub_resource type="Environment" id="Environment_ll5tq"]
 background_mode = 2
@@ -59,8 +59,9 @@ environment = SubResource("Environment_ll5tq")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CameraController" parent="." node_paths=PackedStringArray("trail") instance=ExtResource("3_o6r2t")]
+[node name="CameraController" parent="." node_paths=PackedStringArray("trail", "delete_raycast") instance=ExtResource("3_o6r2t")]
 trail = NodePath("../GPUParticles3D")
+delete_raycast = NodePath("../RayCast3D")
 
 [node name="Planets" type="Node" parent="."]
 
@@ -84,3 +85,8 @@ draw_pass_1 = SubResource("QuadMesh_8tf21")
 
 [node name="SystemA" parent="." instance=ExtResource("11_qxhfv")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 10000, 0)
+collision_mask = 13311
+hit_from_inside = true

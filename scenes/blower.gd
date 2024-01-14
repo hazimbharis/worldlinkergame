@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	
 	if selecting:
 		if Input.is_action_just_pressed("rotate_key"):
-			rotate(Vector3(0, 1, 0), deg_to_rad(45))
+			rotate(Vector3(0, 1, 0), deg_to_rad(45/2))
 			#print(rotation.y)
 
 func current_point():
